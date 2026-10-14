@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>RideShare — Share rides, split costs</title>
+  <meta name="description" content="RideShare matches people travelling the same way so they can share a ride and split the cost." />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header id="navbar"></header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>Share rides. Split costs. Travel together.</h1>
+        <p>RideShare matches people heading the same way at the same time, so you can share one vehicle, save money and reduce traffic.</p>
+        <div class="hero-actions">
+          <a class="btn btn-light" href="register.html">Get started</a>
+          <a class="btn btn-ghost-light" href="login.html">Login</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">How it works</h2>
+        <p class="section-sub">Three simple steps to your shared ride.</p>
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-num">1</div>
+            <h3>Post or search a ride</h3>
+            <p>Drop a start and destination pin on the map, pick your time, seats and vehicle.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">2</div>
+            <h3>Match smartly</h3>
+            <p>We only show rides starting and ending within 100 m of yours, within 15 minutes of your time.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-num">3</div>
+            <h3>Chat &amp; go</h3>
+            <p>Once the owner accepts, a private chat opens. Meet up, ride together and split the cost.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="background:#fff;">
+      <div class="container">
+        <h2 class="section-title">Why RideShare?</h2>
+        <p class="section-sub">Built for everyday commuters and students.</p>
+        <div class="features-grid">
+          <div class="feature-card">
+            <span class="feature-icon">🎯</span>
+            <h3>Exact matching</h3>
+            <p>Start and destination pins must both be close — no noisy, irrelevant results.</p>
+          </div>
+          <div class="feature-card">
+            <span class="feature-icon">💬</span>
+            <h3>Private real-time chat</h3>
+            <p>Chat opens only after a request is accepted. Phone numbers are never collected.</p>
+          </div>
+          <div class="feature-card">
+            <span class="feature-icon">🛡️</span>
+            <h3>Safety controls</h3>
+            <p>Report or block anyone in one tap. Others only ever see your first name.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    RideShare · A demo carpooling portal · Bengaluru, India
+  </footer>
+
+  <div id="toasts"></div>
+  <script type="module">
+    import { renderNav } from './js/auth.js';
+    renderNav('home');
+  </script>
+</body>
+</html>

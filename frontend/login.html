@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Login — RideShare</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/login.css" />
+</head>
+<body>
+  <header id="navbar"></header>
+
+  <main class="auth-wrap">
+    <div class="auth-card">
+      <h1>Welcome back</h1>
+      <p class="auth-sub">Log in to post or find rides.</p>
+      <div class="auth-error" id="authError"></div>
+      <form id="loginForm" novalidate>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" type="email" autocomplete="email" required />
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <input id="password" type="password" autocomplete="current-password" required />
+        </div>
+        <button class="btn btn-block" id="loginBtn" type="submit">Login</button>
+      </form>
+      <p class="auth-alt">New here? <a href="register.html">Create an account</a></p>
+      <div class="demo-logins">
+        <strong>Demo logins</strong>
+        demo1@example.com / password123<br />
+        demo2@example.com / password123
+      </div>
+    </div>
+  </main>
+
+  <div id="toasts"></div>
+  <script type="module" src="js/login.js"></script>
+</body>
+</html>

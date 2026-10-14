@@ -1,0 +1,116 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String        @id @default(uuid())
+  name         String
+  email        String        @unique
+  passwordHash String
+  createdAt    DateTime      @default(now())
+  rides        Ride[]
+  requests     JoinRequest[]
+  messages     Message[]
+  blocksMade   Block[]       @relation("blocker")
+  blocksGot    Block[]       @relation("blocked")
+  reportsMade  Report[]      @relation("reporter")
+  reportsGot   Report[]      @relation("reported")
+}
+
+enum VehicleType {
+  CAR
+  BIKE
+  AUTO
+  SHARED_CAB
+}
+
+enum RideStatus {
+  ACTIVE
+  FULL
+  CANCELLED
+  EXPIRED
+}
+
+model Ride {
+  id             String        @id @default(uuid())
+  ownerId        String
+  owner          User          @relation(fields: [ownerId], references: [id])
+  startLabel     String
+  startLat       Float
+  startLng       Float
+  endLabel       String
+  endLat         Float
+  endLng         Float
+  departureAt    DateTime
+  vehicleType    VehicleType
+  seatsTotal     Int
+  seatsAvailable Int
+  note           String?
+  status         RideStatus    @default(ACTIVE)
+  createdAt      DateTime      @default(now())
+  requests       JoinRequest[]
+
+  @@index([startLat, startLng])
+  @@index([endLat, endLng])
+  @@index([departureAt])
+}
+
+enum RequestStatus {
+  PENDING
+  ACCEPTED
+  REJECTED
+  CANCELLED
+}
+
+model JoinRequest {
+  id          String        @id @default(uuid())
+  rideId      String
+  ride        Ride          @relation(fields: [rideId], references: [id])
+  requesterId String
+  requester   User          @relation(fields: [requesterId], references: [id])
+  status      RequestStatus @default(PENDING)
+  createdAt   DateTime      @default(now())
+  messages    Message[]
+
+  @@index([rideId])
+  @@index([requesterId])
+}
+
+model Message {
+  id        String      @id @default(uuid())
+  requestId String
+  request   JoinRequest @relation(fields: [requestId], references: [id])
+  senderId  String
+  sender    User        @relation(fields: [senderId], references: [id])
+  body      String
+  createdAt DateTime    @default(now())
+
+  @@index([requestId])
+}
+
+model Block {
+  id        String   @id @default(uuid())
+  blockerId String
+  blocker   User     @relation("blocker", fields: [blockerId], references: [id])
+  blockedId String
+  blocked   User     @relation("blocked", fields: [blockedId], references: [id])
+  createdAt DateTime @default(now())
+
+  @@unique([blockerId, blockedId])
+  @@index([blockedId])
+}
+
+model Report {
+  id         String   @id @default(uuid())
+  reporterId String
+  reporter   User     @relation("reporter", fields: [reporterId], references: [id])
+  reportedId String
+  reported   User     @relation("reported", fields: [reportedId], references: [id])
+  reason     String
+  createdAt  DateTime @default(now())
+}

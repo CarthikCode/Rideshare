@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Register — RideShare</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/login.css" />
+</head>
+<body>
+  <header id="navbar"></header>
+
+  <main class="auth-wrap">
+    <div class="auth-card">
+      <h1>Create your account</h1>
+      <p class="auth-sub">Free forever. We never ask for your phone number.</p>
+      <div class="auth-error" id="authError"></div>
+      <form id="registerForm" novalidate>
+        <div class="field">
+          <label for="name">Full name</label>
+          <input id="name" type="text" autocomplete="name" maxlength="60" required />
+          <div class="hint">Others only see your first name and last initial.</div>
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" type="email" autocomplete="email" required />
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <input id="password" type="password" autocomplete="new-password" minlength="8" required />
+          <div class="hint">At least 8 characters.</div>
+        </div>
+        <button class="btn btn-block" id="registerBtn" type="submit">Create account</button>
+      </form>
+      <p class="auth-alt">Already have an account? <a href="login.html">Login</a></p>
+    </div>
+  </main>
+
+  <div id="toasts"></div>
+  <script type="module" src="js/register.js"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Dashboard — RideShare</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+</head>
+<body>
+  <header id="navbar"></header>
+
+  <main class="container page-main">
+    <div class="page-head">
+      <h1 id="welcome">Dashboard</h1>
+      <p>Your rides, requests and chats in one place.</p>
+      <button class="btn btn-sm btn-outline" id="clearCancelledBtn" type="button">🗑️ Clear cancelled rides</button>
+    </div>
+
+    <div class="dash-grid">
+      <section class="dash-section">
+        <h2>My posted rides <span class="count-pill" id="myRidesCount">0</span></h2>
+        <div class="result-list" id="myRides"></div>
+      </section>
+      <section class="dash-section">
+        <h2>Incoming requests <span class="count-pill" id="incomingCount">0</span></h2>
+        <div class="result-list" id="incoming"></div>
+      </section>
+      <section class="dash-section">
+        <h2>My sent requests <span class="count-pill" id="sentCount">0</span></h2>
+        <div class="result-list" id="sent"></div>
+      </section>
+      <section class="dash-section">
+        <h2>Active chats <span class="count-pill" id="chatsCount">0</span></h2>
+        <div class="result-list" id="chats"></div>
+      </section>
+    </div>
+  </main>
+
+  <div id="toasts"></div>
+  <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
+  <script type="module" src="js/dashboard.js"></script>
+</body>
+</html>

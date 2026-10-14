@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Chat — RideShare</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/chat.css" />
+</head>
+<body>
+  <header id="navbar"></header>
+
+  <main class="chat-shell" id="chatShell">
+    <div class="chat-header">
+      <h1 id="chatTitle">Chat</h1>
+      <div class="chat-ride" id="chatRide"></div>
+    </div>
+    <div class="chat-tools hidden" id="chatTools">
+      <button class="btn btn-sm btn-ghost" id="reportBtn" type="button">Report</button>
+      <button class="btn btn-sm btn-ghost" id="blockBtn" type="button">Block</button>
+    </div>
+    <div class="chat-tools hidden" id="chatAppsWrap">
+      <div id="chatApps" style="width:100%"></div>
+    </div>
+    <div class="chat-messages" id="chatMessages"></div>
+    <div class="chat-input-bar">
+      <input id="chatInput" type="text" maxlength="1000" placeholder="Type a message…" autocomplete="off" />
+      <button class="btn" id="sendBtn" type="button">Send</button>
+    </div>
+  </main>
+
+  <div id="toasts"></div>
+  <script src="/socket.io/socket.io.js"></script>
+  <script type="module" src="js/chat.js"></script>
+</body>
+</html>

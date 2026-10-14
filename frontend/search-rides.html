@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Search rides — RideShare</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header id="navbar"></header>
+
+  <main class="container page-main">
+    <div class="page-head">
+      <h1>Find a ride</h1>
+      <p>Only rides starting and ending within 100 m of your pins, within 15 minutes of your time, are shown.</p>
+    </div>
+
+    <div class="map-layout">
+      <div>
+        <div class="pin-mode">
+          <button type="button" class="active" data-mode="start">📍 Set START (A)</button>
+          <button type="button" data-mode="end">🏁 Set DESTINATION (B)</button>
+        </div>
+        <div class="place-search">
+          <input id="placeInput" type="text" placeholder="Search a place in India, e.g. Silk Board Bengaluru" />
+          <button class="btn" id="placeBtn" type="button">Search</button>
+        </div>
+        <ul class="place-results" id="placeResults"></ul>
+        <button class="btn btn-ghost btn-block mb-16" id="locateBtn" type="button">📡 Use my current location (start)</button>
+        <div id="map" class="map"></div>
+      </div>
+
+      <div>
+        <div class="card">
+          <div class="pin-readout"><strong>A · Start:</strong> <span id="startReadout">Not set — click the map or search a place</span></div>
+          <div class="pin-readout"><strong>B · Destination:</strong> <span id="endReadout">Not set — click the map or search a place</span></div>
+          <div class="route-info" id="routeInfo">🛣️ Route distance: <span id="routeDistance"></span></div>
+          <div class="field">
+            <label for="departureAt">When do you want to leave?</label>
+            <input id="departureAt" type="datetime-local" required />
+            <div class="hint">IST. Rides within ±15 minutes are matched.</div>
+          </div>
+          <button class="btn btn-block" id="searchBtn" type="button">Find matching rides</button>
+        </div>
+
+        <section id="resultsSection" class="hidden mt-16">
+          <div class="section-label" id="resultsTitle">Matching rides</div>
+          <div class="result-list" id="resultsList"></div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <div id="toasts"></div>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script type="module" src="js/searchRide.js"></script>
+</body>
+</html>

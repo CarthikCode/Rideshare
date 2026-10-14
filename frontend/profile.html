@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Profile — RideShare</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header id="navbar"></header>
+
+  <main class="container page-main">
+    <div class="page-head">
+      <h1>Your profile</h1>
+      <p>Only your first name and last initial are shown to other users.</p>
+    </div>
+
+    <div class="card" style="max-width:520px;">
+      <form id="profileForm">
+        <div class="field">
+          <label for="nameInput">Full name</label>
+          <input id="nameInput" type="text" maxlength="60" required />
+        </div>
+        <div class="field">
+          <label>Email (never shown to others)</label>
+          <div class="muted" id="emailReadout"></div>
+        </div>
+        <div class="muted small mb-16" id="joinedReadout"></div>
+        <button class="btn" id="saveBtn" type="submit">Save changes</button>
+      </form>
+    </div>
+
+    <div class="section-label">Blocked users</div>
+    <div class="result-list" id="blockedList" style="max-width:520px;"></div>
+  </main>
+
+  <div id="toasts"></div>
+  <script type="module" src="js/profile.js"></script>
+</body>
+</html>

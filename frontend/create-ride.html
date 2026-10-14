@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Post a ride — RideShare</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header id="navbar"></header>
+
+  <main class="container page-main">
+    <div class="page-head">
+      <h1>Post a ride</h1>
+      <p>Drop your pins, set a time, and we will match you with people going the same way.</p>
+    </div>
+
+    <div class="map-layout">
+      <div>
+        <div class="pin-mode">
+          <button type="button" class="active" data-mode="start">📍 Set START (A)</button>
+          <button type="button" data-mode="end">🏁 Set DESTINATION (B)</button>
+        </div>
+        <div class="place-search">
+          <input id="placeInput" type="text" placeholder="Search a place in India, e.g. Majestic Bengaluru" />
+          <button class="btn" id="placeBtn" type="button">Search</button>
+        </div>
+        <ul class="place-results" id="placeResults"></ul>
+        <button class="btn btn-ghost btn-block mb-16" id="locateBtn" type="button">📡 Use my current location (start)</button>
+        <div id="map" class="map"></div>
+      </div>
+
+      <div>
+        <div class="card">
+          <div class="pin-readout"><strong>A · Start:</strong> <span id="startReadout">Not set — click the map or search a place</span></div>
+          <div class="pin-readout"><strong>B · Destination:</strong> <span id="endReadout">Not set — click the map or search a place</span></div>
+          <div class="route-info" id="routeInfo">🛣️ Route distance: <span id="routeDistance"></span></div>
+
+          <form id="rideForm">
+            <div class="field">
+              <label for="departureAt">Departure date &amp; time</label>
+              <input id="departureAt" type="datetime-local" required />
+              <div class="hint">Shown to everyone in IST.</div>
+            </div>
+            <div class="form-row">
+              <div class="field">
+                <label for="vehicleType">Vehicle</label>
+                <select id="vehicleType">
+                  <option value="CAR">Car</option>
+                  <option value="BIKE">Bike</option>
+                  <option value="AUTO">Auto</option>
+                  <option value="SHARED_CAB">Shared cab</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="seatsTotal">Seats available (1–6)</label>
+                <input id="seatsTotal" type="number" min="1" max="6" value="2" required />
+              </div>
+            </div>
+            <div class="field">
+              <label for="note">Note (optional)</label>
+              <textarea id="note" maxlength="200" placeholder="e.g. Leaving sharp, one bag per person"></textarea>
+              <div class="hint">Max 200 characters. No prices — cost is split, not charged.</div>
+            </div>
+            <div class="fare-box hidden" id="fareBox"></div>
+            <button class="btn btn-block mt-16" id="postBtn" type="submit">Post ride</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <section id="matchesSection" class="hidden">
+      <div class="section-label">Matching rides right now</div>
+      <div class="result-list" id="matchesList"></div>
+    </section>
+  </main>
+
+  <div id="toasts"></div>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script type="module" src="js/createRide.js"></script>
+</body>
+</html>
