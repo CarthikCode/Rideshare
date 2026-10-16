@@ -136,6 +136,7 @@ export async function searchRides(req, res) {
 
 export async function myRides(req, res) {
   const rides = await prisma.ride.findMany({
+    relationLoadStrategy: 'join',
     where: { ownerId: req.userId },
     orderBy: { departureAt: 'desc' },
     include: {
@@ -203,7 +204,6 @@ export async function cancelRide(req, res) {
   }
   res.json({ ride: rideDTO(updated) });
 }
-
 
 export async function clearCancelledRides(req, res) {
   const rides = await prisma.ride.findMany({
