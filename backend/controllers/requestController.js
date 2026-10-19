@@ -125,7 +125,6 @@ export async function cancelRequest(req, res) {
 
 export async function incomingRequests(req, res) {
   const requests = await prisma.joinRequest.findMany({
-    relationLoadStrategy: 'join',
     where: { ride: { ownerId: req.userId }, status: { in: ['PENDING', 'ACCEPTED'] } },
     orderBy: { createdAt: 'desc' },
     include: { requester: true, ride: { include: { owner: true } } },
@@ -135,7 +134,6 @@ export async function incomingRequests(req, res) {
 
 export async function sentRequests(req, res) {
   const requests = await prisma.joinRequest.findMany({
-    relationLoadStrategy: 'join',
     where: { requesterId: req.userId },
     orderBy: { createdAt: 'desc' },
     include: { requester: true, ride: { include: { owner: true } } },
@@ -145,7 +143,6 @@ export async function sentRequests(req, res) {
 
 export async function activeChats(req, res) {
   const requests = await prisma.joinRequest.findMany({
-    relationLoadStrategy: 'join',
     where: {
       status: 'ACCEPTED',
       ride: { status: { in: ['ACTIVE', 'FULL'] } },
